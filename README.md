@@ -2,15 +2,36 @@
 
 A new Flutter project.
 
-## Getting Started
+### Requirements
+- Flutter (latest stable version)
+- Dart (latest stable version)
+- Android Studio (latest stable version) // for Android development
+- Xcode (latest stable version) // for iOS development
+- Make
 
-This project is a starting point for a Flutter application.
+## Getting Started development
 
-A few resources to get you started if this is your first Flutter project:
+1- Clone the project
+```bash
+git clone https://github.com/Djancyp/digipost-flutter --branch develop
+```
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+2- create .env file
+```bash
+mv .env.example .env
+```
+3- generate .env keys
+```bash
+make generate-keys
+```
+```bash
+lib/
+├── env
+│   ├── env.dart 
+│   └── env.g.dart (generated))
+```
+- make sure after adding new keys to .env file to run the command `make generate-keys` to generate the new keys in the env.g.dart file
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+
+
