@@ -35,7 +35,7 @@ class CustomButton extends StatelessWidget {
         padding: padding,
         elevation: elevation,
       ),
-      child: Text(text),
+      child: Text(text, style: const TextStyle(fontSize: 16)),
     );
   }
 }
