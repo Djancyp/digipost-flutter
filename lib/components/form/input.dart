@@ -1,4 +1,4 @@
-import 'package:digipost/components/theme/colors.dart';
+import 'package:digipost/core/themes/colors.dart';
 import 'package:flutter/material.dart';
 
 class InputBox extends StatelessWidget {
