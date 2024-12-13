@@ -29,7 +29,7 @@ class LoginPage extends StatelessWidget {
                       Text(
                         "digipost",
                         style: GoogleFonts.montserrat(
-                          fontSize: 28,
+                          fontSize: 32,
                           fontWeight: FontWeight.bold,
                           color: Colors.white,
                         ),
