@@ -27,5 +27,15 @@
 	"language": "Language",
 	"onboarding_last_slide_1": "You can order from all your favourite online stores and pick up at a time and place that suits you",
 	"onboarding_last_slide_2": "Get started by creating an account or logging in.",
-	"onboarding_last_slide_3": "Select your language above to continue."
+	"onboarding_last_slide_3": "Select your language above to continue.",
+	"login_top_text": "Login to your account",
+	"forgot_password": "Forgot password?",
+	"login_button": "Login",
+	"register_text": "Don't have an account? Sign Up.",
+	"register_top_text": "Create an account",
+	"register_middle_text": "Sign up to get started",
+	"register_button": "Sign Up",
+	"already_have_account": "Already have an account? Login.",
+	"reset_password": "Reset Password",
+	"login_text": "Already have an account? Login."
 }

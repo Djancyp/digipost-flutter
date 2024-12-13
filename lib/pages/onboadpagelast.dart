@@ -90,6 +90,7 @@ class _OnboardingLastPageState extends State<OnboardingLastPage> {
             CustomButton(
               text: AppLocalizations.of(context)!.next,
               backgroundColor: TailwindColors.teal600,
+              padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 30),
               onPressed: () {
                 if (_currentIndex < textSlides.length - 1) {
                   _pageController.nextPage(
@@ -97,7 +98,7 @@ class _OnboardingLastPageState extends State<OnboardingLastPage> {
                     curve: Curves.easeInOut,
                   );
                 } else {
-                  Navigator.pushNamed(context, '/next_text');
+                  Navigator.pushNamed(context, '/login');
                 }
               },
             ),
@@ -105,6 +106,7 @@ class _OnboardingLastPageState extends State<OnboardingLastPage> {
             CustomButton(
               text: AppLocalizations.of(context)!.skip,
               backgroundColor: TailwindColors.black,
+              padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 30),
               onPressed: () {
                 Navigator.pushNamed(context, '/login');
               },

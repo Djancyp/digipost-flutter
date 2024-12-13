@@ -24,7 +24,7 @@ class LanguageSwitcher extends StatelessWidget {
             padding: const EdgeInsets.fromLTRB(15, 2, 15, 2),
             value: Localizations.localeOf(context),
             // icon: const Icon(Icons.language, color: Colors.white), // White icon color
-            iconSize: 24, // Adjust icon size if necessary
+            iconSize: 25, // Adjust icon size if necessary
             dropdownColor: TailwindColors.gray900, // Set a modern dropdown color
             style: const TextStyle(color: Colors.white, fontSize: 16), // White text for the selected item
             items: AppLocalizations.supportedLocales.map((locale) {
@@ -37,7 +37,7 @@ class LanguageSwitcher extends StatelessWidget {
                     Text(
                       locale.languageCode.toUpperCase(),
                       style: const TextStyle(
-                        fontSize: 16,
+                        fontSize: 14,
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
                       ),

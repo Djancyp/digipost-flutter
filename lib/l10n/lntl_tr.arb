@@ -27,5 +27,15 @@
 	"language": "Dil",
 	"onboarding_last_slide_1": "Tüm favori online mağazalarınızdan sipariş verebilir ve size uygun bir zaman ve yerden teslim alabilirsiniz.",
 	"onboarding_last_slide_2": "Hesap oluşturarak veya giriş yaparak başlayın.",
-	"onboarding_last_slide_3": "Lütfen devam etmek için yukarıdan dilinizi seçin."
+	"onboarding_last_slide_3": "Lütfen devam etmek için yukarıdan dilinizi seçin.",
+	"login_top_text": "Hesabınıza giriş yapın",
+	"forgot_password": "Şifrenizi mi unuttunuz?",
+	"login_button": "Giriş Yap",
+	"register_text": "Hesabınız yok mu? Kayıt Olun.",
+	"register_top_text": "Hesap Oluşturun",
+	"register_middle_text": "Başlamak için kaydolun",
+	"register_button": "Kayıt Ol",
+	"already_have_account": "Zaten bir hesabınız var mı? Giriş Yapın.",
+	"reset_password": "Şifreyi Sıfırla",
+	"login_text": "Hesabınız var mı? Giriş Yapın."
 }

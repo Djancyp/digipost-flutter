@@ -51,6 +51,7 @@ class OnboardingPage extends StatelessWidget {
                 child: CustomButton(
                   text: AppLocalizations.of(context)!.next,
                   backgroundColor: TailwindColors.teal600,
+									padding: const EdgeInsets.symmetric(vertical: 15,horizontal: 30),
                   onPressed: () {
                     Navigator.pushNamed(context, '/onboardinglast');
                   },
