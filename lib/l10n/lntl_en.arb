@@ -39,5 +39,11 @@
 	"reset_password": "Reset Password",
 	"login_text": "Already have an account? Login.",
 	"empty_field": "This field cannot be empty",
-	"invalid_email": "Please enter a valid email"
+	"invalid_email": "Please enter a valid email",
+	"login_error": "Invalid username or password",
+	"password_length_error": "Password must be at least 6 characters long",
+	"password_complexity_error": "Password must contain at least one uppercase letter, one lowercase letter, one number and one special character",
+	"register_success": "Registration successful! Please check your email to verify your account.",
+	"register_error": "Registration failed. Please try again later.",
+	"reset_password_success": "Password reset successful! Please check your email for further instructions."
 }

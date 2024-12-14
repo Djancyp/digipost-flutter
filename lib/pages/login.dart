@@ -2,6 +2,7 @@ import 'package:digipost/components/box_decoration.dart';
 import 'package:digipost/components/form/input.dart';
 import 'package:digipost/components/notifications.dart';
 import 'package:digipost/core/events/user.dart';
+import 'package:digipost/core/routes/app_routes.dart';
 import 'package:digipost/core/themes/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -70,7 +71,8 @@ class LoginPage extends StatelessWidget {
                             }
                             // check email format
                             if (!RegExp(r'\S+@\S+\.\S+').hasMatch(value)) {
-                              return AppLocalizations.of(context)!.invalid_email;
+                              return AppLocalizations.of(context)!
+                                  .invalid_email;
                             }
                             return null;
                           },
@@ -123,37 +125,24 @@ class LoginPage extends StatelessWidget {
                               final String password =
                                   passwordController.text.trim();
 
-                              if (email.isNotEmpty && password.isNotEmpty) {
-                                try {
-                                  final res = await nexusUserProfile.login(
-                                      email, password);
-                                  if (res == 'Success') {
-                                    showCustomNotification(
-                                      context,
-                                      "Login Successful",
-                                      NotificationType.success,
-                                    );
-                                    // Navigator.pushNamed(
-                                    //     context, AppRoutes.dashboard);
-                                  } else {
-                                    showCustomNotification(
-                                      context,
-                                      "There was an error logging in",
-                                      NotificationType.error,
-                                    );
-                                  }
-                                } catch (e) {
+                              try {
+                                final res = await nexusUserProfile.login(
+                                    email, password);
+                                if (res == 'Success') {
+                                  Navigator.pushNamed(
+                                      context, AppRoutes.dashboard);
+                                } else {
                                   showCustomNotification(
                                     context,
-                                    Text(e.toString()).data.toString(),
+                                    AppLocalizations.of(context)!.login_error,
                                     NotificationType.error,
                                   );
                                 }
-                              } else {
+                              } catch (e) {
                                 showCustomNotification(
                                   context,
-                                  "Please fill in all fields",
-                                  NotificationType.info,
+                                  AppLocalizations.of(context)!.login_error,
+                                  NotificationType.error,
                                 );
                               }
                             }

@@ -1,1 +1,10 @@
-{}
+{
+  "tr": [
+    "login_error",
+    "password_length_error",
+    "password_complexity_error",
+    "register_success",
+    "register_error",
+    "reset_password_success"
+  ]
+}

@@ -16,7 +16,7 @@ class AppRoutes {
   static const signup = '/signup';
   static const forgotPassword = '/forgot_password';
 
-	static const dashboard = '/dashboard';
+  static const dashboard = '/dashboard';
 }
 
 class RouteGenerator {
@@ -60,11 +60,11 @@ class RouteGenerator {
           ),
         );
       case AppRoutes.signup:
-        return CupertinoPageRoute(builder: (_) => const SignUpPage());
+        return CupertinoPageRoute(builder: (_) => SignUpPage());
       case AppRoutes.forgotPassword:
-        return CupertinoPageRoute(builder: (_) => const ForgotPasswordPage());
-			case AppRoutes.dashboard:
-				return CupertinoPageRoute(builder: (_) => const DashboardPage());
+        return CupertinoPageRoute(builder: (_) => ForgotPasswordPage());
+      case AppRoutes.dashboard:
+        return CupertinoPageRoute(builder: (_) => const DashboardPage());
 
       default:
         return errorRoute();
@@ -74,7 +74,7 @@ class RouteGenerator {
   /// Initial route handler: Determines if onboarding is complete
   static Route _handleInitialRoute() {
     SharedPreferencesManager prefs = SharedPreferencesManager();
-		// prefs.remove("isOnboardingCompleted"); // debug purpose
+    // prefs.remove("isOnboardingCompleted"); // debug purpose
     bool isOnboardingCompleted =
         prefs.getBool("isOnboardingCompleted") ?? false;
 
