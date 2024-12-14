@@ -70,9 +70,34 @@ class ForgotPasswordPage extends StatelessWidget {
                     const SizedBox(height: 20),
                     // Reset Password Button
                     ElevatedButton(
-                      onPressed: () {
+                      onPressed: () async {
+                        if (_formKey.currentState?.validate() ?? false) {
+                          // Navigate to Login screen
+                          final nexusUserProfile =
+                              context.read<NexusUserProfile>();
+                          final email = emailController.text;
+                          try {
+                            final res =
+                                await nexusUserProfile.forgotPassword(email);
+                            if (res == "Success") {
+                              Navigator.pushNamed(context, '/login');
+                              showCustomNotification(
+                                context,
+                                AppLocalizations.of(context)!
+                                    .reset_password_success,
+                                NotificationType.success,
+                              );
+                            }
+                          } catch (e) {
+                            showCustomNotification(
+                              context,
+                              AppLocalizations.of(context)!.login_error,
+                              NotificationType.error,
+                            );
+                          }
+                        }
+
                         // Add reset password logic here
-                        Navigator.pushNamed(context, '/reset_password');
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: TailwindColors.teal700,
@@ -95,31 +120,9 @@ class ForgotPasswordPage extends StatelessWidget {
                     // Back to Login Button
                     Center(
                       child: TextButton(
-                        onPressed: () async {
-                          if (_formKey.currentState?.validate() ?? false) {
-                            // Navigate to Login screen
-                            final nexusUserProfile =
-                                context.read<NexusUserProfile>();
-                            final email = emailController.text;
-                            try {
-                              final res =
-                                  await nexusUserProfile.forgotPassword(email);
-                              if (res == "Success") {
-                                Navigator.pushNamed(context, '/login');
-																showCustomNotification(
-																	context,
-																	AppLocalizations.of(context)!.reset_password_success,
-																	NotificationType.success,
-																);
-                              }
-                            } catch (e) {
-                              showCustomNotification(
-                                context,
-                                AppLocalizations.of(context)!.login_error,
-                                NotificationType.error,
-                              );
-                            }
-                          }
+                        onPressed: () {
+                          // Navigate to Login screen
+                          Navigator.pushNamed(context, '/login');
                         },
                         child: Text(
                           AppLocalizations.of(context)!.login_text,
