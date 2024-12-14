@@ -1,11 +1,21 @@
+import 'package:digipost/core/events/user.dart';
 import 'package:digipost/core/routes/app_routes.dart';
 import 'package:digipost/core/themes/theme.dart';
+import 'package:digipost/store/store.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/lntl_localizations.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:provider/provider.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await SharedPreferencesManager().init();
+  runApp(MultiProvider(providers: [
+    //ChangeNotifierProvider(create: (context) => NexusLoginEvent()),
+    ChangeNotifierProvider(
+      create: (context) => NexusUserProfile(),
+    )
+  ], child: const MyApp()));
 }
 
 class MyApp extends StatefulWidget {

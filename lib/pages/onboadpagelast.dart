@@ -4,6 +4,7 @@ import 'package:flutter_gen/gen_l10n/lntl_localizations.dart';
 import 'package:digipost/components/box_decoration.dart';
 import 'package:digipost/core/themes/colors.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:digipost/store/store.dart';
 
 class OnboardingLastPage extends StatefulWidget {
   final Function(Locale) onLocaleChange;
@@ -18,6 +19,43 @@ class _OnboardingLastPageState extends State<OnboardingLastPage> {
   final PageController _pageController = PageController();
   int _currentIndex = 0;
 
+  late SharedPreferencesManager _prefs; // SharedPreferencesManager instance
+  bool _isOnboardingCompleted = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _initializePreferences();
+  }
+
+  // Initialize SharedPreferences and check onboarding status
+  Future<void> _initializePreferences() async {
+    _prefs = SharedPreferencesManager();
+    bool isCompleted = _prefs.getBool("isOnboardingCompleted") ?? false;
+
+    if (isCompleted) {
+      // Navigate immediately without updating the UI
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        _navigateToNextPage();
+      });
+    } else {
+      // Update state only when mounted
+      if (mounted) {
+        setState(() {
+          _isOnboardingCompleted = isCompleted;
+        });
+      }
+    }
+  }
+
+  void _markOnboardingAsCompleted() async {
+    await _prefs.saveBool("isOnboardingCompleted", true);
+  }
+
+  void _navigateToNextPage() {
+    Navigator.pushReplacementNamed(context, '/login'); // Change route as needed
+  }
+
   @override
   void dispose() {
     _pageController.dispose();
@@ -27,6 +65,11 @@ class _OnboardingLastPageState extends State<OnboardingLastPage> {
   @override
   Widget build(BuildContext context) {
     // Fetch localized text slides inside the build method
+    if (_isOnboardingCompleted) {
+      return const SizedBox
+          .shrink(); // Prevent rendering if onboarding is already completed
+    }
+
     final List<String> textSlides = [
       AppLocalizations.of(context)!.onboarding_last_slide_1,
       AppLocalizations.of(context)!.onboarding_last_slide_2,
@@ -98,6 +141,7 @@ class _OnboardingLastPageState extends State<OnboardingLastPage> {
                     curve: Curves.easeInOut,
                   );
                 } else {
+                  _markOnboardingAsCompleted();
                   Navigator.pushNamed(context, '/login');
                 }
               },
@@ -108,6 +152,7 @@ class _OnboardingLastPageState extends State<OnboardingLastPage> {
               backgroundColor: TailwindColors.black,
               padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 30),
               onPressed: () {
+                _markOnboardingAsCompleted();
                 Navigator.pushNamed(context, '/login');
               },
             ),

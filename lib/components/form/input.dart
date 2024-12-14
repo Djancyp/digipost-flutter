@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 class InputBox extends StatelessWidget {
   final TextEditingController controller;
   final String labelText;
-  final String hintText;
+  final String? hintText;
   final bool obscureText;
   final Icon? prefixIcon;
   final Icon? suffixIcon;
@@ -12,12 +12,13 @@ class InputBox extends StatelessWidget {
   final bool focus;
   final TextStyle inputStyle;
   final Function(String)? onChanged;
+  final String? Function(String?)? validator; // Added validator function
 
   const InputBox({
     super.key,
     required this.controller,
     required this.labelText,
-    required this.hintText,
+    this.hintText,
     this.obscureText = false,
     this.prefixIcon,
     this.suffixIcon,
@@ -28,47 +29,33 @@ class InputBox extends StatelessWidget {
     this.focus = false,
     this.keyboardType = TextInputType.text,
     this.onChanged,
+    this.validator, // Added validator parameter
   });
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 9.0),
-      child: TextField(
+      child: TextFormField(
         style: inputStyle,
         autofocus: focus,
         controller: controller,
         obscureText: obscureText,
         keyboardType: keyboardType,
         onChanged: onChanged,
+        validator: validator, // Validation logic here
         decoration: InputDecoration(
           filled: true,
-          fillColor: TailwindColors.gray50,
+          fillColor: Colors.white.withOpacity(0.1),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(12.0),
+            borderSide: BorderSide.none,
+          ),
           labelText: labelText,
-          labelStyle: const TextStyle(
-            color: TailwindColors.gray900,
-            fontSize: 12,
-          ),
           hintText: hintText,
-          hintStyle: const TextStyle(
-            color: TailwindColors.gray400,
-            fontSize: 12,
-          ),
+          labelStyle: const TextStyle(color: Colors.white70),
           prefixIcon: prefixIcon,
           suffixIcon: suffixIcon,
-          hoverColor: TailwindColors.gray100,
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(4),
-            borderSide: const BorderSide(color: Colors.green),
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(4),
-            borderSide: const BorderSide(color: TailwindColors.gray300),
-          ),
-          enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(4),
-            borderSide: const BorderSide(color: TailwindColors.gray200),
-          ),
         ),
       ),
     );

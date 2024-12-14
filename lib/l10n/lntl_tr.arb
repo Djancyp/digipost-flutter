@@ -37,5 +37,7 @@
 	"register_button": "Kayıt Ol",
 	"already_have_account": "Zaten bir hesabınız var mı? Giriş Yapın.",
 	"reset_password": "Şifreyi Sıfırla",
-	"login_text": "Hesabınız var mı? Giriş Yapın."
+	"login_text": "Hesabınız var mı? Giriş Yapın.",
+	 "empty_field": "Bu alan boş bırakılamaz",
+  "invalid_email": "Lütfen geçerli bir email adresi girin"
 }

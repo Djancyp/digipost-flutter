@@ -37,5 +37,7 @@
 	"register_button": "Sign Up",
 	"already_have_account": "Already have an account? Login.",
 	"reset_password": "Reset Password",
-	"login_text": "Already have an account? Login."
+	"login_text": "Already have an account? Login.",
+	"empty_field": "This field cannot be empty",
+	"invalid_email": "Please enter a valid email"
 }
